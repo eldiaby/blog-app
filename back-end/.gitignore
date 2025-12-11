@@ -1,0 +1,70 @@
+# ==============================
+# Node modules
+# ==============================
+node_modules/
+
+# ==============================
+# Build outputs
+# ==============================
+dist/
+dist-min/
+build/
+temp/
+tmp/
+
+# ==============================
+# TS
+# ==============================
+*.tsbuildinfo
+
+# ==============================
+# Logs
+# ==============================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Vitest coverage
+coverage/
+
+# ==============================
+# Env files
+# ==============================
+.env
+.env.*
+!.env.example   # لو عندك example سيبه
+
+# ==============================
+# OS files
+# ==============================
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Editors
+# ==============================
+.vscode/
+.idea/
+
+# ==============================
+# MongoDB (test/dev)
+# ==============================
+# mongodb-memory-server temporary DBs
+**/mongodb-memory-server-*/  
+*.db
+*.sqlite
+*.sqlite3
+
+# ==============================
+# Pino logs
+# ==============================
+*.pid
+*.pid.lock
+
+# ==============================
+# Optional – Ignore compiled JS in src (لو بتعمل emit)
+# ==============================
+src/**/*.js
+src/**/*.js.map
