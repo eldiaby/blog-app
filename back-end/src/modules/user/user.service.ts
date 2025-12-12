@@ -18,6 +18,12 @@ export const userService = {
 		return user;
 	},
 
+	async getUserByEmail(email: string, options = { selectPassword: false }) {
+		const user = await userRepository.findByEmail(email, options);
+		// if (!user) throw new Error("User not found");
+		return user;
+	},
+
 	async createUser(data: IUser) {
 		// if (!data.email?.includes("@")) {
 		// 	throw new Error("Invalid email");

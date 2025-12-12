@@ -10,8 +10,10 @@ export const userRepository = {
 		return await UserModel.findById(id);
 	},
 
-	async findByEmail(email: string) {
-		return await UserModel.findOne({ email });
+	async findByEmail(email: string, options = { selectPassword: false }) {
+		return await UserModel.findOne({ email }).select(
+			`${options.selectPassword ? "+password" : "-password"}`,
+		);
 	},
 
 	async findByUserName(name: string) {

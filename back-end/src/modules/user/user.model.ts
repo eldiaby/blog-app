@@ -1,4 +1,4 @@
-import { hash } from "argon2";
+import { hash, verify } from "argon2";
 import mongoose from "mongoose";
 import {
 	type IProfilePhoto,
@@ -93,5 +93,11 @@ userSchema.pre<IUserDocument>("save", async function () {
 	this.password = await hash(this.password);
 	this.passwordConfirm = undefined;
 });
+
+userSchema.methods.comparePassword = async function (
+	password: string,
+): Promise<boolean> {
+	return await verify(this.password, password);
+};
 
 export const UserModel = mongoose.model<IUserDocument>("User", userSchema);

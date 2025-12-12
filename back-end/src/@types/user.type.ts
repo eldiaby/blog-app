@@ -24,4 +24,6 @@ export interface IUser {
 	updatedAt?: Date;
 }
 
-export interface IUserDocument extends IUser, Document {}
+export interface IUserDocument extends IUser, Document {
+	comparePassword: (password: string) => boolean;
+}
