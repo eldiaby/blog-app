@@ -12,7 +12,7 @@ const emailRegex =
 
 // Regex for strong password validation (8-16 chars, 1 uppercase, 1 lowercase, 1 number, 1 special)
 const passwordRegex =
-	/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+	/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 const validateRegex = (value: string, type: "password" | "email") =>
 	type === "password" ? passwordRegex.test(value) : emailRegex.test(value);
@@ -56,8 +56,9 @@ const userSchema = new mongoose.Schema<IUserDocument>(
 			validate: {
 				validator: (value: string) => validateRegex(value, "password"),
 				message:
-					"Password must contain 1 uppercase, 1 lowercase, 1 number, 1 special character (8-16 chars)",
+					"Password must contain 1 uppercase, 1 lowercase, 1 number, 1 special character (more than 8 chars)",
 			},
+			select: false,
 		},
 		passwordConfirm: {
 			type: String,
