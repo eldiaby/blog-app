@@ -1,15 +1,16 @@
 import { z } from "zod";
+import { passwordRegex } from "./../constants/regex";
 
 export const registerSchema = z.object({
 	name: z.string().min(1, "Name is required"),
-	email: z.string().email(), // الرسالة الافتراضية
+	email: z.string().email(),
 	password: z
 		.string()
 		.min(8, "Password must be at least 8 characters")
 		.max(16, "Password must be at most 16 characters")
 		.regex(
-			/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/,
-			"Password must contain uppercase, lowercase, number and special character",
+			passwordRegex,
+			"Password must contain uppercase, lowercase, number and special character and more than 8 characters",
 		),
 	passwordConfirm: z.string(),
 });

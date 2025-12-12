@@ -6,13 +6,7 @@ import {
 	IUserRole,
 } from "../../@types/user.type";
 
-// Regex for email validation
-const emailRegex =
-	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
-
-// Regex for strong password validation (8-16 chars, 1 uppercase, 1 lowercase, 1 number, 1 special)
-const passwordRegex =
-	/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+import { emailRegex, passwordRegex } from "./../../constants/regex";
 
 const validateRegex = (value: string, type: "password" | "email") =>
 	type === "password" ? passwordRegex.test(value) : emailRegex.test(value);
@@ -62,7 +56,8 @@ const userSchema = new mongoose.Schema<IUserDocument>(
 		},
 		passwordConfirm: {
 			type: String,
-			required: [true, "Please confirm your password"],
+			select: false,
+			// required: [true, "Please confirm your password"],
 		},
 		profilePhoto: {
 			type: {
