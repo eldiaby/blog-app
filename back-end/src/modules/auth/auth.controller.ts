@@ -18,7 +18,7 @@ const login = async (req: Request, res: Response) => {
 		req.body.email,
 		req.body.password,
 	);
-	apiResponse(res, { message: `This is login route`, data });
+	apiResponse(res, { message: `User authenticated successfully`, data });
 };
 
 export default {
