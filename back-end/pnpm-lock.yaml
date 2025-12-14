@@ -8,15 +8,15 @@ importers:
 
   .:
     dependencies:
-      '@mpoonuru/paseto':
-        specifier: ^4.0.1
-        version: 4.0.1
       argon2:
         specifier: ^0.44.0
         version: 0.44.0
       compression:
         specifier: ^1.8.1
         version: 1.8.1
+      cookie-parser:
+        specifier: ^1.4.7
+        version: 1.4.7
       cors:
         specifier: ^2.8.5
         version: 2.8.5
@@ -26,18 +26,12 @@ importers:
       express:
         specifier: ^5.2.1
         version: 5.2.1
-      express-async-handler:
-        specifier: ^1.2.0
-        version: 1.2.0
       jsonwebtoken:
         specifier: ^9.0.3
         version: 9.0.3
       mongoose:
         specifier: ^9.0.1
         version: 9.0.1
-      paseto:
-        specifier: ^3.1.4
-        version: 3.1.4
       uuid:
         specifier: ^13.0.0
         version: 13.0.0
@@ -51,6 +45,9 @@ importers:
       '@types/compression':
         specifier: ^1.8.1
         version: 1.8.1
+      '@types/cookie-parser':
+        specifier: ^1.4.10
+        version: 1.4.10(@types/express@5.0.6)
       '@types/express':
         specifier: ^5.0.6
         version: 5.0.6
@@ -58,8 +55,8 @@ importers:
         specifier: ^9.0.10
         version: 9.0.10
       '@types/node':
-        specifier: ^25.0.1
-        version: 25.0.1
+        specifier: ^25.0.2
+        version: 25.0.2
       '@types/supertest':
         specifier: ^6.0.3
         version: 6.0.3
@@ -95,7 +92,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: ^4.0.15
-        version: 4.0.15(@types/node@25.0.1)(@vitest/ui@4.0.15)(tsx@4.21.0)
+        version: 4.0.15(@types/node@25.0.2)(@vitest/ui@4.0.15)(tsx@4.21.0)
 
 packages:
 
@@ -473,10 +470,6 @@ packages:
   '@mongodb-js/saslprep@1.3.2':
     resolution: {integrity: sha512-QgA5AySqB27cGTXBFmnpifAi7HxoGUeezwo6p9dI03MuDB6Pp33zgclqVb6oVK3j6I9Vesg0+oojW2XxB59SGg==}
 
-  '@mpoonuru/paseto@4.0.1':
-    resolution: {integrity: sha512-eFPIzd00KBhP3zFYtWeq5FOf6uQ+UUCJn2rXEk64SnAbfmE683NOvrLxYbrfiqoWyim62+c7xRs0L6TP2DCvQg==}
-    engines: {node: '>=20.0.0'}
-
   '@noble/hashes@1.8.0':
     resolution: {integrity: sha512-jCs9ldd7NwzpgXDIf6P3+NrHh9/sD6CQdxHyjQI+h/6rDNo88ypBxxz45UDuZHz9r3tNz7N/VInSVoVdtXEI4A==}
     engines: {node: ^14.21.3 || >=16}
@@ -604,45 +597,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@stablelib/aead@2.0.0':
-    resolution: {integrity: sha512-U/RMANRxbT/ahIpYsPSiFwDFNjADHdnCFfmo09MO1ai2XmerPAOPtMl0qmX7XVvygnACC6ijKDyHBoT2rGyElg==}
-
-  '@stablelib/binary@2.0.1':
-    resolution: {integrity: sha512-U9iAO8lXgEDONsA0zPPSgcf3HUBNAqHiJmSHgZz62OvC3Hi2Bhc5kTnQ3S1/L+sthDTHtCMhcEiklmIly6uQ3w==}
-
-  '@stablelib/blake2b@2.0.1':
-    resolution: {integrity: sha512-kBN4i9FHpkTEVrHwKtb1ZjI6QwyoK8emY9TaLcHHFSZkw2FN9Td8Js9mU2U10q+EZ3Mp6z78QgdPDwJXbc3Dtw==}
-
-  '@stablelib/chacha20poly1305@2.0.1':
-    resolution: {integrity: sha512-kOoBsXbDPVRlelzXl+5WViycgM19lD7lF3Bc3KWI+DzId0Stc2HlxAfSc+Xpn3RgqSCl1ZNTXr33LegqBhBBaw==}
-
-  '@stablelib/chacha@2.0.1':
-    resolution: {integrity: sha512-lS1FqtNqofxe2vLkRsLli2m3x/XanUyAYRphLhdHumKeIsLbjbCXdCq3Pf/eWiO7G3QlSG5ViqnoVjktzfLWMg==}
-
-  '@stablelib/constant-time@2.0.1':
-    resolution: {integrity: sha512-0NWPogffRm+UWBH0+iM5otZmNrVe5OHFIvyoNIVankMAYOQzMwcdVALOVPrB5Ho0dST+Oc3H8/hPh65Z8R/uew==}
-
-  '@stablelib/hash@2.0.0':
-    resolution: {integrity: sha512-u3WPSqGido8lwJuMcrBgM5K54LrPGhkWAdtsyccf7dGsLixAZUds77zOAbu7bvKPwQlmoByH0txBi5rTmEKuHg==}
-
-  '@stablelib/int@2.0.1':
-    resolution: {integrity: sha512-Ht63fQp3wz/F8U4AlXEPb7hfJOIILs8Lq55jgtD7KueWtyjhVuzcsGLSTAWtZs3XJDZYdF1WcSKn+kBtbzupww==}
-
-  '@stablelib/poly1305@2.0.1':
-    resolution: {integrity: sha512-D8xfZcL/5zeVARJ9I2fZOUCnZvsJx8G4JDQvD+ecsnaCildPtqZDwqqjtOc4cfHAdScrMjOzUVsssjXUTBw3YQ==}
-
-  '@stablelib/random@2.0.1':
-    resolution: {integrity: sha512-W6GAtXEEs7r+dSbuBsvoFmlyL3gLxle41tQkjKu17dDWtDdjhVUbtRfRCQcCUeczwkgjQxMPopgwYEvxXtHXGw==}
-
-  '@stablelib/wipe@2.0.1':
-    resolution: {integrity: sha512-1eU2K9EgOcV4qc9jcP6G72xxZxEm5PfeI5H55l08W95b4oRJaqhmlWRc4xZAm6IVSKhVNxMi66V67hCzzuMTAg==}
-
-  '@stablelib/xchacha20@2.0.1':
-    resolution: {integrity: sha512-k55pNv7gIM4mUPU00+nJYTxKiUVNwAtsgrridC0aIU5cVbw9u6qP99x8ENu5eiwOEhZUNg+p3tTOLooCeAOJQA==}
-
-  '@stablelib/xchacha20poly1305@2.0.1':
-    resolution: {integrity: sha512-OUZnnPsd4y5ConoMtADkxiz308vcYrpFT7hzTgXLo5UMyu7aPAP0FaOM+aJAnV+GHBoWp+2ncDOhvtho3VDp7g==}
-
   '@standard-schema/spec@1.0.0':
     resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
 
@@ -657,6 +611,11 @@ packages:
 
   '@types/connect@3.4.38':
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
+
+  '@types/cookie-parser@1.4.10':
+    resolution: {integrity: sha512-B4xqkqfZ8Wek+rCOeRxsjMS9OgvzebEzzLYw7NHYuvzb7IdxOkI0ZHGgeEBX4PUM7QGVvNSK60T3OvWj3YfBRg==}
+    peerDependencies:
+      '@types/express': '*'
 
   '@types/cookiejar@2.1.5':
     resolution: {integrity: sha512-he+DHOWReW0nghN24E1WUqM0efK4kI9oTqDm6XmK8ZPe2djZ90BSNdGnIyCLzCPw7/pogPlGbzI2wHGGmi4O/Q==}
@@ -685,8 +644,8 @@ packages:
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node@25.0.1':
-    resolution: {integrity: sha512-czWPzKIAXucn9PtsttxmumiQ9N0ok9FrBwgRWrwmVLlp86BrMExzvXRLFYRJ+Ex3g6yqj+KuaxfX1JTgV2lpfg==}
+  '@types/node@25.0.2':
+    resolution: {integrity: sha512-gWEkeiyYE4vqjON/+Obqcoeffmk0NF15WSBwSs7zwVA2bAbTaE0SJ7P0WNGoJn8uE7fiaV5a7dKYIJriEqOrmA==}
 
   '@types/qs@6.14.0':
     resolution: {integrity: sha512-eOunJqu0K1923aExK6y8p6fsihYEn/BYuQ4g0CxAAgFc4b/ZLN4CrsRZ55srTdqoiLzU2B2evC+apEIxprEzkQ==}
@@ -865,6 +824,13 @@ packages:
     resolution: {integrity: sha512-nTjqfcBFEipKdXCv4YDQWCfmcLZKm81ldF0pAopTvyrFGVbcR6P/VAAd5G7N+0tTr8QqiU0tFadD6FK4NtJwOA==}
     engines: {node: '>= 0.6'}
 
+  cookie-parser@1.4.7:
+    resolution: {integrity: sha512-nGUvgXnotP3BsjiLX2ypbQnWoGUPIIfHQNZkkC668ntrzGWEZVW70HDEB1qnNGMicPje6EttlIgzo51YSwNQGw==}
+    engines: {node: '>= 0.8.0'}
+
+  cookie-signature@1.0.6:
+    resolution: {integrity: sha512-QADzlaHc8icV8I7vbaJXJwod9HWYp8uCqf1xa4OfNu1T7JVxQIrUgOWtHdNDtPiywmFbiS12VjotIXLrKM3orQ==}
+
   cookie-signature@1.2.2:
     resolution: {integrity: sha512-D76uU73ulSXrD1UXF4KE2TMxVVwhsnCgfAyTg9k8P6KGZjlXKrOLe4dJQKI3Bxi5wjesZoFXJWElNWBjPZMbhg==}
     engines: {node: '>=6.6.0'}
@@ -986,9 +952,6 @@ packages:
   expect-type@1.2.2:
     resolution: {integrity: sha512-JhFGDVJ7tmDJItKhYgJCGLOWjuK9vPxiXoUFLwLDc99NlmklilbiQJwoctZtt13+xMw91MCk/REan6MWHqDjyA==}
     engines: {node: '>=12.0.0'}
-
-  express-async-handler@1.2.0:
-    resolution: {integrity: sha512-rCSVtPXRmQSW8rmik/AIb2P0op6l7r1fMW538yyvTMltCO4xQEWMmobfrIxN2V1/mVrgxB8Az3reYF6yUZw37w==}
 
   express@5.2.1:
     resolution: {integrity: sha512-hIS4idWWai69NezIdRt2xFVofaF4j+6INOpJlVOLDO8zXGpUVEVzIYk12UUi2JzjEzWL3IOAxcTubgz9Po0yXw==}
@@ -1372,10 +1335,6 @@ packages:
   parseurl@1.3.3:
     resolution: {integrity: sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==}
     engines: {node: '>= 0.8'}
-
-  paseto@3.1.4:
-    resolution: {integrity: sha512-BifaKKu+MS9b/vTgFMC6Q8uLUMqw8VtYgl4qODJWb6Jqt+dTKn8XH9EftJZx+6wxF4ELBbKdH33DZa4inMYVcg==}
-    engines: {node: '>=16.0.0'}
 
   path-exists@4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
@@ -1955,12 +1914,6 @@ snapshots:
     dependencies:
       sparse-bitfield: 3.0.3
 
-  '@mpoonuru/paseto@4.0.1':
-    dependencies:
-      '@stablelib/blake2b': 2.0.1
-      '@stablelib/random': 2.0.1
-      '@stablelib/xchacha20poly1305': 2.0.1
-
   '@noble/hashes@1.8.0': {}
 
   '@paralleldrive/cuid2@2.3.1':
@@ -2039,70 +1992,12 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.53.2':
     optional: true
 
-  '@stablelib/aead@2.0.0': {}
-
-  '@stablelib/binary@2.0.1':
-    dependencies:
-      '@stablelib/int': 2.0.1
-
-  '@stablelib/blake2b@2.0.1':
-    dependencies:
-      '@stablelib/binary': 2.0.1
-      '@stablelib/hash': 2.0.0
-      '@stablelib/wipe': 2.0.1
-
-  '@stablelib/chacha20poly1305@2.0.1':
-    dependencies:
-      '@stablelib/aead': 2.0.0
-      '@stablelib/binary': 2.0.1
-      '@stablelib/chacha': 2.0.1
-      '@stablelib/constant-time': 2.0.1
-      '@stablelib/poly1305': 2.0.1
-      '@stablelib/wipe': 2.0.1
-
-  '@stablelib/chacha@2.0.1':
-    dependencies:
-      '@stablelib/binary': 2.0.1
-      '@stablelib/wipe': 2.0.1
-
-  '@stablelib/constant-time@2.0.1': {}
-
-  '@stablelib/hash@2.0.0': {}
-
-  '@stablelib/int@2.0.1': {}
-
-  '@stablelib/poly1305@2.0.1':
-    dependencies:
-      '@stablelib/constant-time': 2.0.1
-      '@stablelib/wipe': 2.0.1
-
-  '@stablelib/random@2.0.1':
-    dependencies:
-      '@stablelib/binary': 2.0.1
-      '@stablelib/wipe': 2.0.1
-
-  '@stablelib/wipe@2.0.1': {}
-
-  '@stablelib/xchacha20@2.0.1':
-    dependencies:
-      '@stablelib/binary': 2.0.1
-      '@stablelib/chacha': 2.0.1
-      '@stablelib/wipe': 2.0.1
-
-  '@stablelib/xchacha20poly1305@2.0.1':
-    dependencies:
-      '@stablelib/aead': 2.0.0
-      '@stablelib/chacha20poly1305': 2.0.1
-      '@stablelib/constant-time': 2.0.1
-      '@stablelib/wipe': 2.0.1
-      '@stablelib/xchacha20': 2.0.1
-
   '@standard-schema/spec@1.0.0': {}
 
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 25.0.1
+      '@types/node': 25.0.2
 
   '@types/chai@5.2.3':
     dependencies:
@@ -2112,11 +2007,15 @@ snapshots:
   '@types/compression@1.8.1':
     dependencies:
       '@types/express': 5.0.6
-      '@types/node': 25.0.1
+      '@types/node': 25.0.2
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 25.0.1
+      '@types/node': 25.0.2
+
+  '@types/cookie-parser@1.4.10(@types/express@5.0.6)':
+    dependencies:
+      '@types/express': 5.0.6
 
   '@types/cookiejar@2.1.5': {}
 
@@ -2126,7 +2025,7 @@ snapshots:
 
   '@types/express-serve-static-core@5.1.0':
     dependencies:
-      '@types/node': 25.0.1
+      '@types/node': 25.0.2
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 1.2.1
@@ -2142,13 +2041,13 @@ snapshots:
   '@types/jsonwebtoken@9.0.10':
     dependencies:
       '@types/ms': 2.1.0
-      '@types/node': 25.0.1
+      '@types/node': 25.0.2
 
   '@types/methods@1.1.4': {}
 
   '@types/ms@2.1.0': {}
 
-  '@types/node@25.0.1':
+  '@types/node@25.0.2':
     dependencies:
       undici-types: 7.16.0
 
@@ -2158,18 +2057,18 @@ snapshots:
 
   '@types/send@1.2.1':
     dependencies:
-      '@types/node': 25.0.1
+      '@types/node': 25.0.2
 
   '@types/serve-static@2.2.0':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 25.0.1
+      '@types/node': 25.0.2
 
   '@types/superagent@8.1.9':
     dependencies:
       '@types/cookiejar': 2.1.5
       '@types/methods': 1.1.4
-      '@types/node': 25.0.1
+      '@types/node': 25.0.2
       form-data: 4.0.4
 
   '@types/supertest@6.0.3':
@@ -2196,13 +2095,13 @@ snapshots:
       chai: 6.2.1
       tinyrainbow: 3.0.3
 
-  '@vitest/mocker@4.0.15(vite@7.2.2(@types/node@25.0.1)(tsx@4.21.0))':
+  '@vitest/mocker@4.0.15(vite@7.2.2(@types/node@25.0.2)(tsx@4.21.0))':
     dependencies:
       '@vitest/spy': 4.0.15
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.2.2(@types/node@25.0.1)(tsx@4.21.0)
+      vite: 7.2.2(@types/node@25.0.2)(tsx@4.21.0)
 
   '@vitest/pretty-format@4.0.15':
     dependencies:
@@ -2230,7 +2129,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.0.3
-      vitest: 4.0.15(@types/node@25.0.1)(@vitest/ui@4.0.15)(tsx@4.21.0)
+      vitest: 4.0.15(@types/node@25.0.2)(@vitest/ui@4.0.15)(tsx@4.21.0)
 
   '@vitest/utils@4.0.15':
     dependencies:
@@ -2338,6 +2237,13 @@ snapshots:
       safe-buffer: 5.2.1
 
   content-type@1.0.5: {}
+
+  cookie-parser@1.4.7:
+    dependencies:
+      cookie: 0.7.2
+      cookie-signature: 1.0.6
+
+  cookie-signature@1.0.6: {}
 
   cookie-signature@1.2.2: {}
 
@@ -2490,8 +2396,6 @@ snapshots:
       - bare-abort-controller
 
   expect-type@1.2.2: {}
-
-  express-async-handler@1.2.0: {}
 
   express@5.2.1:
     dependencies:
@@ -2871,8 +2775,6 @@ snapshots:
 
   parseurl@1.3.3: {}
 
-  paseto@3.1.4: {}
-
   path-exists@4.0.0: {}
 
   path-key@3.1.1: {}
@@ -3213,7 +3115,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite@7.2.2(@types/node@25.0.1)(tsx@4.21.0):
+  vite@7.2.2(@types/node@25.0.2)(tsx@4.21.0):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.3)
@@ -3222,14 +3124,14 @@ snapshots:
       rollup: 4.53.2
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 25.0.1
+      '@types/node': 25.0.2
       fsevents: 2.3.3
       tsx: 4.21.0
 
-  vitest@4.0.15(@types/node@25.0.1)(@vitest/ui@4.0.15)(tsx@4.21.0):
+  vitest@4.0.15(@types/node@25.0.2)(@vitest/ui@4.0.15)(tsx@4.21.0):
     dependencies:
       '@vitest/expect': 4.0.15
-      '@vitest/mocker': 4.0.15(vite@7.2.2(@types/node@25.0.1)(tsx@4.21.0))
+      '@vitest/mocker': 4.0.15(vite@7.2.2(@types/node@25.0.2)(tsx@4.21.0))
       '@vitest/pretty-format': 4.0.15
       '@vitest/runner': 4.0.15
       '@vitest/snapshot': 4.0.15
@@ -3246,10 +3148,10 @@ snapshots:
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.0.3
-      vite: 7.2.2(@types/node@25.0.1)(tsx@4.21.0)
+      vite: 7.2.2(@types/node@25.0.2)(tsx@4.21.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 25.0.1
+      '@types/node': 25.0.2
       '@vitest/ui': 4.0.15(vitest@4.0.15)
     transitivePeerDependencies:
       - jiti
