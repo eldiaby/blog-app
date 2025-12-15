@@ -5,6 +5,7 @@ import { authentication } from "../../middlewares/authentication";
 import { authorization } from "../../middlewares/authorization";
 import { restrictTo } from "../../middlewares/restrictTo";
 import { sanitizeBody } from "../../middlewares/sanitizeBody";
+import { handleImage, uploadImage } from "../../middlewares/uploadSingle";
 import { validateBody } from "../../middlewares/validateBody";
 import { validateObjectId } from "../../middlewares/validateObjectId";
 
@@ -27,6 +28,16 @@ router.post(
 	restrictTo(IUserRole.ADMIN),
 	userController.create,
 );
+
+router.put(
+	"/upload-profile-photo",
+	authentication,
+	authorization,
+	uploadImage,
+	handleImage,
+	userController.uploadProfilePhote,
+);
+
 router.put(
 	"/:id",
 	validateObjectId,
@@ -36,6 +47,7 @@ router.put(
 	authorization,
 	userController.update,
 );
+
 router.delete("/:id", authentication, authorization, userController.remove);
 
 export default router;

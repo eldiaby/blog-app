@@ -16,7 +16,7 @@ export interface IUser {
 	email: string;
 	password: string;
 	passwordConfirm?: string;
-	profilePhoto?: IProfilePhoto;
+	profilePhoto: IProfilePhoto;
 	bio?: string;
 	isVerify?: boolean;
 	isActive?: boolean;

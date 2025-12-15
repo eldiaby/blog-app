@@ -1,5 +1,6 @@
 import type { Request, Response } from "express";
-import apiResponse from "./../../utils/apiResponse";
+import apiResponse, { ResponseStatus } from "./../../utils/apiResponse";
+
 import { userService } from "./user.service";
 
 export const userController = {
@@ -66,6 +67,41 @@ export const userController = {
 			} else {
 				res.status(404).json({ message: "Unexpected error" });
 			}
+		}
+	},
+
+	async uploadProfilePhote(req: Request, res: Response) {
+		try {
+			const result = await userService.uploadUserImage(
+				req?.file?.filename,
+				req.user.id,
+			);
+
+			return apiResponse(res, {
+				message: "Profile photo uploaded successfully",
+				data: {
+					userId: req.user.id,
+					image: result?.uri,
+				},
+				status: ResponseStatus.SUCCESS,
+				statusCode: 200,
+			});
+		} catch (err) {
+			if (err instanceof Error) {
+				return apiResponse(res, {
+					message: err.message,
+					data: null,
+					status: ResponseStatus.ERROR,
+					statusCode: 404,
+				});
+			}
+
+			return apiResponse(res, {
+				message: "Unexpected error",
+				data: null,
+				status: ResponseStatus.ERROR,
+				statusCode: 500,
+			});
 		}
 	},
 };

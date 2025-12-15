@@ -1,3 +1,5 @@
+import path from "node:path";
+
 import compression from "compression";
 import cookieParser from "cookie-parser";
 import express from "express";
@@ -14,6 +16,7 @@ export const app = express();
 app.use(express.json());
 app.use(compression());
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
 
 /** 1) Correlation ID */
 app.use((req, _, next) => {
