@@ -1,5 +1,5 @@
 import type { IUser } from "../../@types/user.type";
-import { createToken } from "../../utils/jwt";
+import { generateAuthToken } from "../../utils/jwt";
 import { UserModule } from "../user/user.module";
 
 const createUser = async (user: IUser) => {
@@ -34,10 +34,15 @@ const login = async (email: string, password: string) => {
 		id: userRecord._id.toString(),
 		email: userRecord.email,
 		role: userRecord.role,
-		profilePhoto: userRecord.profilePhoto,
+		profilePhoto: userRecord.profilePhoto
+			? {
+					uri: userRecord.profilePhoto.uri,
+					publicId: userRecord.profilePhoto.publicId ?? null,
+				}
+			: undefined,
 	};
 
-	const authToken = createToken(userPayload);
+	const authToken = await generateAuthToken(userPayload);
 
 	return { token: authToken, user: userPayload };
 };

@@ -2,7 +2,7 @@ import type { Document } from "mongoose";
 
 export interface IProfilePhoto {
 	uri: string;
-	publicID: string | null;
+	publicId: string | null;
 }
 
 export enum IUserRole {

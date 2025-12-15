@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 
-export const sanitizeBodyMiddleware =
+export const sanitizeBody =
 	(allowedKeys: string[]) =>
 	(req: Request, _: Response, next: NextFunction) => {
 		if (req.body && typeof req.body === "object") {

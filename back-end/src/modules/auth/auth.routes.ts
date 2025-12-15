@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { sanitizeBodyMiddleware } from "../../middlewares/sanitizeBodyMiddleware";
+import { sanitizeBody } from "../../middlewares/sanitizeBody";
 import { validateBody } from "../../middlewares/validateBody";
 
 import { loginSchema, registerSchema } from "../../shcemas/auth.shcema";
@@ -11,14 +11,14 @@ const router = Router();
 
 router.post(
 	`/regester`,
-	sanitizeBodyMiddleware(["name", "email", "password", "passwordConfirm"]),
+	sanitizeBody(["name", "email", "password", "passwordConfirm"]),
 	validateBody(registerSchema),
 	authController.register,
 );
 
 router.post(
 	`/login`,
-	sanitizeBodyMiddleware([`email`, "password"]),
+	sanitizeBody([`email`, "password"]),
 	validateBody(loginSchema),
 	authController.login,
 );

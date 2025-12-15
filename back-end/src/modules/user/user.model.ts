@@ -13,7 +13,7 @@ const validateRegex = (value: string, type: "password" | "email") =>
 
 const defaultProfilePhoto: IProfilePhoto = {
 	uri: "https://cdn.pixabay.com/photo/2017/01/31/21/23/avatar-2027364_1280.png",
-	publicID: null,
+	publicId: null,
 };
 
 const userSchema = new mongoose.Schema<IUserDocument>(
@@ -62,7 +62,7 @@ const userSchema = new mongoose.Schema<IUserDocument>(
 		profilePhoto: {
 			type: {
 				uri: { type: String, default: defaultProfilePhoto.uri },
-				publicID: { type: String, default: null },
+				publicId: { type: String, default: null },
 			},
 			default: defaultProfilePhoto,
 		},

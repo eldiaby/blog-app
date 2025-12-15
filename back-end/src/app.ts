@@ -1,10 +1,10 @@
 import compression from "compression";
+import cookieParser from "cookie-parser";
 import express from "express";
 import pinoHttp from "pino-http";
 import { v4 as uuidv4 } from "uuid";
 import { logger } from "./config/logger";
 import { requestLogger } from "./middlewares/requestLogger";
-import cookieParser from "cookie-parser";
 
 import { authModule } from "./modules/auth/auth.module";
 import { UserModule } from "./modules/user/user.module";
