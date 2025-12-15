@@ -30,6 +30,10 @@ export const userRepository = {
 	},
 
 	async deleteById(id: string) {
-		return await UserModel.findByIdAndDelete(id);
+		return await UserModel.findByIdAndUpdate(
+			id,
+			{ isActive: false },
+			{ new: true },
+		);
 	},
 };
