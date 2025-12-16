@@ -1,7 +1,7 @@
 import type { IUser } from "../../@types/user.type";
 
 import { removeImage, uploadImageFromPath } from "./../../utils/cloudinary";
-import removeLocalFile from "./../../utils/deleteLocalFile";
+// import removeLocalFile from "./../../utils/deleteLocalFile";
 
 import { userRepository } from "./user.repository";
 

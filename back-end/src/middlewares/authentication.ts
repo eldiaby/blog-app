@@ -20,7 +20,6 @@ export const authentication = (
 
 	try {
 		req.user = verifyAuthToken(token);
-		console.log(req.user);
 		next();
 	} catch (_) {
 		return apiResponse(res, {

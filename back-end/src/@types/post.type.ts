@@ -1,10 +1,10 @@
-import type { Document, Schema } from "mongoose";
+import type { Document, Types } from "mongoose";
 
 export interface IPost {
 	title: string;
 	content: string;
 	summary?: string; // AI-generated summary
-	author: Schema.Types.ObjectId; // User ID
+	author: Types.ObjectId; // User ID
 	tags?: string[];
 	category?: string;
 	coverImage?: {

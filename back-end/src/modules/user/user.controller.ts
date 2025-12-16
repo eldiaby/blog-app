@@ -72,10 +72,13 @@ export const userController = {
 
 	async uploadProfilePhote(req: Request, res: Response) {
 		try {
-			const result = await userService.uploadUserImage(
-				req?.file?.filename,
-				req.user.id,
-			);
+			if (!req.file) {
+				throw new Error("No file uploaded");
+			}
+
+			const imagePath = req.file.path;
+
+			const result = await userService.uploadUserImage(imagePath, req.user.id);
 
 			return apiResponse(res, {
 				message: "Profile photo uploaded successfully",

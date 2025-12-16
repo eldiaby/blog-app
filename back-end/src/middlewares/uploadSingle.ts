@@ -51,7 +51,7 @@ export const handleImage = async (
 			.jpeg({ quality: 90 })
 			.toFile(outputPath);
 
-		req.file.filename = outputPath;
+		req.file.path = outputPath;
 		next();
 	} catch (err) {
 		next(err);
