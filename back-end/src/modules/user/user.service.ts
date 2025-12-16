@@ -1,6 +1,6 @@
 import type { IUser } from "../../@types/user.type";
 
-import { removeImage, uploadImage } from "./../../utils/cloudinary";
+import { removeImage, uploadImageFromPath } from "./../../utils/cloudinary";
 import removeLocalFile from "./../../utils/deleteLocalFile";
 
 import { userRepository } from "./user.repository";
@@ -55,7 +55,9 @@ export const userService = {
 
 	async uploadUserImage(filePath: string, userId: string) {
 		// 1) Upload image to cloud
-		const image = await uploadImage(filePath);
+		const image = await uploadImageFromPath(filePath, "users/avatars", {
+			removeAfterUpload: true,
+		});
 
 		if (!image || !image.secure_url || !image.public_id) {
 			throw new Error("Image upload failed");
@@ -84,7 +86,7 @@ export const userService = {
 		await user.save();
 
 		// 5) Remove local file
-		await removeLocalFile(filePath);
+		// await removeLocalFile(filePath);
 
 		// 6) Return useful data
 		return {
