@@ -1,5 +1,7 @@
 import type { Request, Response } from "express";
 import apiResponse from "./../../utils/apiResponse";
+import { sendSignedCookie } from "../../utils/sendSignedCookie";
+
 import { authModule } from "./auth.module";
 
 const register = async (req: Request, res: Response) => {
@@ -17,6 +19,13 @@ const login = async (req: Request, res: Response) => {
 		req.body.email,
 		req.body.password,
 	);
+
+	sendSignedCookie({
+		res,
+		name: process.env.AUTH_TOKEN_NAME || "authToken",
+		data: data.token,
+	});
+
 	apiResponse(res, { message: `User authenticated successfully`, data });
 };
 

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { authentication } from "../../middlewares/authentication";
-import { authorization } from "../../middlewares/authorization";
+
 import { sanitizeBody } from "../../middlewares/sanitizeBody";
 import { handleImage, uploadImage } from "../../middlewares/uploadSingle";
 import { validateBody } from "../../middlewares/validateBody";
@@ -12,7 +12,6 @@ const router = Router();
 router.post(
 	"/",
 	authentication,
-	authorization,
 	uploadImage,
 	handleImage,
 	sanitizeBody([

@@ -9,7 +9,7 @@ export const authentication = (
 ) => {
 	const token = req.headers.authorization?.startsWith("Bearer ")
 		? req.headers.authorization.split(" ")[1]
-		: req.signedCookies.auth_token;
+		: req.signedCookies[`${process.env.AUTH_TOKEN_NAME || "authToken"}`];
 
 	if (!token) {
 		return apiResponse(res, {

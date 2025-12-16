@@ -1,5 +1,6 @@
 import type { IUser } from "../../@types/user.type";
 import { generateAuthToken } from "../../utils/jwt";
+
 import { UserModule } from "../user/user.module";
 
 const createUser = async (user: IUser) => {

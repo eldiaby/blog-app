@@ -16,7 +16,7 @@ export const app = express();
 
 app.use(express.json());
 app.use(compression());
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.static(path.join(__dirname, "public")));
 
 /** 1) Correlation ID */
