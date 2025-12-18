@@ -65,6 +65,7 @@ const userSchema = new mongoose.Schema<IUserDocument>(
 				publicId: { type: String, default: null },
 			},
 			default: defaultProfilePhoto,
+			_id: false,
 		},
 		bio: {
 			type: String,
@@ -79,8 +80,19 @@ const userSchema = new mongoose.Schema<IUserDocument>(
 			default: true,
 		},
 	},
-	{ timestamps: true },
+	{
+		timestamps: true,
+		toJSON: { virtuals: true },
+		toObject: { virtuals: true },
+	},
 );
+
+userSchema.virtual("posts", {
+	ref: "Post",
+	localField: "_id",
+	foreignField: "author",
+	options: { sort: { createdAt: -1 } },
+});
 
 // Pre-save hook for hashing password
 userSchema.pre<IUserDocument>("save", async function () {

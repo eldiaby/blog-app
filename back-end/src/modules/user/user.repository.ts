@@ -3,11 +3,11 @@ import { UserModel } from "./user.model";
 
 export const userRepository = {
 	async findAll() {
-		return await UserModel.find();
+		return await UserModel.find().populate("posts");
 	},
 
 	async findById(id: string) {
-		return await UserModel.findById(id);
+		return await UserModel.findById(id).populate("posts");
 	},
 
 	async findByEmail(email: string, options = { selectPassword: false }) {

@@ -1,4 +1,4 @@
-import type { Document } from "mongoose";
+import type { Document, Types } from "mongoose";
 
 export interface IProfilePhoto {
 	uri: string;
@@ -22,6 +22,7 @@ export interface IUser {
 	isActive?: boolean;
 	createdAt?: Date;
 	updatedAt?: Date;
+	posts?: Types.ObjectId[];
 }
 
 export interface IUserDocument extends IUser, Document {

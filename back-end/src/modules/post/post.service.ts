@@ -102,7 +102,7 @@ export default {
 		let action: "liked" | "unliked";
 
 		if (index === -1) {
-			post.likes.push(userId);
+			post.likes.push(new Types.ObjectId(userId));
 			action = "liked";
 		} else {
 			post.likes.splice(index, 1);
