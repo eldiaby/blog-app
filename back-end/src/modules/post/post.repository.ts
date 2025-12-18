@@ -13,8 +13,7 @@ export default {
 	async getPostById(id: string) {
 		return await postModel
 			.findById(id)
-			.populate("author", "name email  profilePhoto.uri")
-			.lean();
+			.populate("author", "name email  profilePhoto.uri");
 	},
 
 	async createPost(post: IPost) {

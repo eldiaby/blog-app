@@ -34,7 +34,7 @@ router.put(
 	authentication,
 	authorization,
 	uploadImage,
-	handleImage,
+	handleImage({ throwError: true }),
 	userController.uploadProfilePhote,
 );
 

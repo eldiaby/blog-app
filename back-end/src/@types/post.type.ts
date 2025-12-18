@@ -13,7 +13,7 @@ export interface IPost {
 	};
 	isActive?: boolean; // Soft Delete
 	views?: number;
-	likes?: string[]; // User IDs
+	likes: Types.ObjectId[]; // User IDs
 	// seoTitle?: string;
 	// seoDescription?: string;
 	// embeddingVector?: number[]; // Optional for semantic search

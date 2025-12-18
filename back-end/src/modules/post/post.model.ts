@@ -12,7 +12,10 @@ const postSchema = new Schema<IPost>(
 		coverImage: { url: String, publicId: String },
 		isActive: { type: Boolean, default: true },
 		views: { type: Number, default: 0 },
-		likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
+		likes: {
+			type: [{ type: Schema.Types.ObjectId, ref: "User" }],
+			default: [],
+		},
 	},
 	{ timestamps: true },
 );

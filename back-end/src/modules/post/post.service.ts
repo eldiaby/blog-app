@@ -92,4 +92,25 @@ export default {
 			coverImage: post.coverImage,
 		});
 	},
+
+	async toggleLike(userId: string, postId: string) {
+		const post = await postRepository.getPostById(postId);
+		if (!post) return null;
+
+		const index = post.likes.findIndex((id) => id.toString() === userId);
+
+		let action: "liked" | "unliked";
+
+		if (index === -1) {
+			post.likes.push(userId);
+			action = "liked";
+		} else {
+			post.likes.splice(index, 1);
+			action = "unliked";
+		}
+
+		await post.save();
+
+		return { post, action };
+	},
 };

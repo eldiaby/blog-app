@@ -135,4 +135,25 @@ export default {
 		});
 		res.json(newPost);
 	},
+
+	async toggleLike(req: Request, res: Response) {
+		const result = await postService.toggleLike(req.user.id, req.params.id);
+
+		if (!result) {
+			return apiResponse(res, {
+				message: "Post not found",
+				data: null,
+				statusCode: 404,
+			});
+		}
+
+		return apiResponse(res, {
+			message:
+				result.action === "liked"
+					? "Post liked successfully"
+					: "Post unliked successfully",
+			data: result.post,
+			statusCode: 200,
+		});
+	},
 };

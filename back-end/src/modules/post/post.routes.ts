@@ -15,7 +15,7 @@ router.post(
 	"/",
 	authentication,
 	uploadImage,
-	handleImage,
+	handleImage({ throwError: true }),
 	sanitizeBody([
 		"title",
 		"content",
@@ -56,6 +56,13 @@ router.patch(
 	]),
 	validateBody(updatePostSchema),
 	postController.updatePost,
+);
+
+router.post(
+	"/like/:id",
+	authentication,
+	validateObjectId,
+	postController.toggleLike,
 );
 
 export default router;
