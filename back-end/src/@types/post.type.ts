@@ -5,7 +5,7 @@ export interface IPost {
 	content: string;
 	summary?: string; // AI-generated summary
 	author: Types.ObjectId; // User ID
-	tags?: string[];
+	tags?: string[] | string;
 	category?: string;
 	coverImage?: {
 		url: string;

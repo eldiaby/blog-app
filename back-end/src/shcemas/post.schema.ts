@@ -21,3 +21,23 @@ export const createPostSchema = z
 		embeddingVector: z.array(z.number()).optional(),
 	})
 	.strict();
+
+export const updatePostSchema = z
+	.object({
+		title: z.string().optional(),
+		content: z.string().optional(),
+		summary: z.string().optional(),
+		author: z.string().optional(),
+		tags: z.string().optional(),
+		category: z.string().optional(),
+		coverImage: z
+			.object({
+				url: z.string().optional(),
+				publicId: z.string().optional(),
+			})
+			.optional(),
+		isActive: z.boolean().optional(),
+		views: z.number().optional(),
+		likes: z.array(z.string()).optional(),
+	})
+	.strict();
