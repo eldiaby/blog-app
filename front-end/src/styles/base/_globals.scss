@@ -1,0 +1,58 @@
+@use "../abstracts/colors" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: $main-color;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+input,
+select,
+textarea {
+  &:focus {
+    outline: none;
+  }
+}
+
+/* Global icon styles */
+.bi-pencil-square {
+  color: $green-sea-color;
+  margin-right: 15px;
+}
+
+.bi-trash-fill {
+  color: $red-color;
+}
+
+/* Scrollbar (WebKit Browsers) */
+html {
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgb(187, 179, 179);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $dark-color;
+    border-radius: 15px;
+  }
+}
