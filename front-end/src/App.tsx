@@ -1,7 +1,7 @@
-import { Header } from "@/components/Header";
+import ReactRouter from "./providers/ReactRouter";
 
 function App() {
-  return <Header />;
+  return <ReactRouter />;
 }
 
 export default App;

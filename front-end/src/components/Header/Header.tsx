@@ -1,3 +1,4 @@
+import { ROUTES } from "@/constants/routes";
 import "./Header.scss";
 import { useState } from "react";
 import {
@@ -10,6 +11,8 @@ import {
   FaUserCheck,
   FaUserPlus,
 } from "react-icons/fa";
+
+import { Link, NavLink } from "react-router-dom";
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,36 +34,36 @@ const Header: React.FC = () => {
       {/* Center Section: Navbar */}
       <nav className={`header__navbar ${menuOpen ? "open" : ""}`}>
         <ul className="header__navbar__list">
-          <li className="header__navbar__link">
+          <NavLink to={ROUTES.ROOT} className="header__navbar__link">
             <FaHome className="header__navbar__icon" />
             Home
-          </li>
-          <li className="header__navbar__link">
+          </NavLink>
+          <NavLink to={ROUTES.PUBLIC.POSTS} className="header__navbar__link">
             <FaThLarge className="header__navbar__icon" />
             Posts
-          </li>
-          <li className="header__navbar__link">
+          </NavLink>
+          <NavLink to={ROUTES.PRIVATE.CREATE_POST} className="header__navbar__link">
             <FaPencilAlt className="header__navbar__icon" />
             New Post
-          </li>
-          <li className="header__navbar__link">
+          </NavLink>
+          <NavLink to={ROUTES.PRIVATE.DASHBOARD} className="header__navbar__link">
             <FaUserCheck className="header__navbar__icon" />
             Admin Dashboard
-          </li>
+          </NavLink>
         </ul>
       </nav>
 
       {/* Right Section: User Actions */}
       <div className="header__header-right">
         <ul className="header__user-actions">
-          <li className="header__user-action">
+          <Link to={ROUTES.PUBLIC.LOGIN} className="header__user-action">
             <FaSignInAlt className="header__user-icon" />
             Login
-          </li>
-          <li className="header__user-action">
+          </Link>
+          <Link to={ROUTES.PUBLIC.REGISTER} className="header__user-action">
             <FaUserPlus className="header__user-icon" />
             Register
-          </li>
+          </Link>
         </ul>
 
         {/* Burger Menu Icon */}
