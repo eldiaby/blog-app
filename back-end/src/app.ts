@@ -9,6 +9,7 @@ import { logger } from "./config/logger";
 import { requestLogger } from "./middlewares/requestLogger";
 
 import { authModule } from "./modules/auth/auth.module";
+import { CommentModule } from "./modules/comment/comment.module";
 import { PostModule } from "./modules/post/post.module";
 import { UserModule } from "./modules/user/user.module";
 
@@ -61,5 +62,6 @@ app.use(
 app.use("/api/v1/auth", authModule.router);
 app.use("/api/v1/users", UserModule.router);
 app.use("/api/v1/posts", PostModule.router);
+app.use("/api/v1/comments", CommentModule.router);
 
 app.get("/", (_, res) => res.send("API is running..."));

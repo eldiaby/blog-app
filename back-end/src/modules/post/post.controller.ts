@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
+import { IUserRole } from "../../@types/user.type";
 import apiResponse from "./../../utils/apiResponse";
 import postService from "./post.service";
-import { IUserRole } from "../../@types/user.type";
 
 export default {
 	async createPost(req: Request, res: Response) {
@@ -35,7 +35,7 @@ export default {
 		}
 	},
 
-	async getAllPosts(req: Request, res: Response) {
+	async getAllPosts(_: Request, res: Response) {
 		try {
 			const posts = await postService.getAllPosts();
 			if (posts.length === 0) {

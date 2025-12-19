@@ -71,7 +71,7 @@ export default {
 					},
 				);
 
-				if (image && image.secure_url && image.public_id) {
+				if (image?.secure_url && image?.public_id) {
 					post.coverImage.url = image.secure_url;
 					post.coverImage.publicId = image.public_id;
 				} else {
