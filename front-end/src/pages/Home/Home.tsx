@@ -1,7 +1,9 @@
-import PostList from "@/components/PostList/PostList";
 import "./Home.scss";
+import PostList from "@/components/PostList/PostList";
 
-import { posts } from "@/dummyData";
+import Sidebar from "@/components/Sidebar/Sidebar";
+import { categories, posts } from "@/dummyData";
+import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
   return (
@@ -14,7 +16,12 @@ const Home: React.FC = () => {
       <div className="home__latest-post">Latest posts</div>home-container
       <div className="home__container">
         <PostList posts={posts} />
-        <aside className="post-sidebar">Sidebar</aside>
+        <Sidebar categories={categories} />
+      </div>
+      <div className="home-see-posts-link">
+        <Link to={`/posts`} className="home-link">
+          See all posts
+        </Link>
       </div>
     </section>
   );

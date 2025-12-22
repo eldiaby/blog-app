@@ -37,13 +37,47 @@ display: flex;
       display: flex;
     align-items: flex-start;
     padding: 0 30px;
+}
+
+.home-see-posts-link {
+padding: 0 30px;
+margin: 30px 0;
+
+  .home-link {
+    width: 100%;
+    padding: 10px;
+    font-size: 21px;
+    background-color: colors.$dark-color;
+    color: colors.$white-color;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    display: block;
+    text-align: center;
+    border-radius: 5px;
+    text-transform: capitalize;
+  }
+}
 
 
-    //  & .post-list {
-    //   flex: 9;
-    // }
+@media  only screen and (max-width: 990px) {
+  .home__container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
-     & .post-sidebar {
-      flex: 3;
-    }
+
+@media  only screen and (max-width: 520px) {
+  .home__container {
+padding: 0 15px;
+  }
+
+  .home__latest-post {
+    margin-left: 15px;
+  }
+
+  .home__hero__header__layout__title {
+    font-size: 30px;
+  }
 }
