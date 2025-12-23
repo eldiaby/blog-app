@@ -1,3 +1,4 @@
+import "./Footer.scss";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
 const Footer: React.FC = () => {
